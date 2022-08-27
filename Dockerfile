@@ -1,7 +1,15 @@
-FROM openjdk:17
+FROM maven:3.6.3 AS maven
+# Create a workdir for our app
+WORKDIR /usr/src/app
+COPY . /usr/src/app
 
-EXPOSE 8080
+# Compile and package the application to an executable JAR
+RUN mvn clean package -DskipTests
+# Using java 11
+FROM openjdk:11-jdk
 
-ADD ./build/libs/*.jar app.jar
+ARG JAR_FILE=/usr/src/app/target/*.jar
+# Copying JAR file
+COPY --from=maven ${JAR_FILE} app.jar
 
-CMD ["java", "-jar", "/app.jar"]
+ENTRYPOINT ["java","-jar","/app.jar"]
