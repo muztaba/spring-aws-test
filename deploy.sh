@@ -14,7 +14,7 @@ apt-cache policy docker-ce
 yes | sudo apt install docker-ce
 
 # make sure demo docker is not running
-sudo docker rm $(sudo docker stop $(sudo docker ps -a -q --filter ancestor=spring-aws:latest --format="{{.ID}}"))
+sudo docker rm $(sudo docker stop $(sudo docker ps -a -q --filter ancestor=springaws:latest --format="{{.ID}}"))
 
 # copy nginx conf to default
 sudo cp nginx.conf /etc/nginx/conf.d/default.conf
@@ -23,12 +23,12 @@ sudo systemctl restart nginx
 
 echo "Building docker "
 # build dockerfile
-sudo docker build -f Dockerfile -t spring-aws:latest .
+sudo docker build -f Dockerfile -t springaws:latest .
 ls
 echo "end building docker "
 sudo docker ps
 # run in detached mode
-sudo docker run -p 8080:8080 -d spring-aws:latest
+sudo docker run -p 8080:8080 -d springaws:latest
 
 sleep 15
 
