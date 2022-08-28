@@ -14,7 +14,7 @@ apt-cache policy docker-ce
 yes | sudo apt install docker-ce
 
 # make sure demo docker is not running
-sudo docker rm $(sudo docker stop $(sudo docker ps -a -q --filter ancestor=demo:latest --format="{{.ID}}"))
+sudo docker rm $(sudo docker stop $(sudo docker ps -a -q --filter ancestor=spring-aws:latest --format="{{.ID}}"))
 
 # copy nginx conf to default
 sudo cp nginx.conf /etc/nginx/conf.d/default.conf
