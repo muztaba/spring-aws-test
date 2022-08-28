@@ -19,6 +19,6 @@ class TestController {
 
 	@GetMapping("/hello")
 	public String hello() {
-		return "Hello aws";
+		return "Hello aws from iwoa";
 	}
 }
