@@ -21,11 +21,13 @@ sudo cp nginx.conf /etc/nginx/conf.d/default.conf
 
 sudo systemctl restart nginx
 
+echo "Building docker "
 # build dockerfile
-sudo docker build -f Dockerfile -t demo:latest .
-
+sudo docker build -f Dockerfile -t spring-aws:latest .
+echo "end building docker "
+sudo docker ps
 # run in detached mode
-sudo docker run -p 8080:8080 -d demo:latest
+sudo docker run -p 8080:8080 -d spring-aws:latest
 
 sleep 15
 
