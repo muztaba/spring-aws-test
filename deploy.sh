@@ -24,6 +24,7 @@ sudo systemctl restart nginx
 echo "Building docker "
 # build dockerfile
 sudo docker build -f Dockerfile -t spring-aws:latest .
+ls
 echo "end building docker "
 sudo docker ps
 # run in detached mode
