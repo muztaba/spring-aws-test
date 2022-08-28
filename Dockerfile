@@ -11,4 +11,5 @@ RUN mkdir /app
 
 COPY --from=build /home/gradle/src/build/libs/*.jar app/
 
+
 ENTRYPOINT ["java","-jar","/app/dockertest-0.0.1-SNAPSHOT.jar"]
